@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import IngredientList from './IngredientList'
 import BurgerPane from './BurgerPane'
 
-const ingredients = [
+const ingredientsStart = [
   {name: 'Kaiser Bun', color: 'saddlebrown'},
   {name: 'Sesame Bun', color: 'sandybrown'},
   {name: 'Gluten Free Bun', color: 'peru'},
@@ -17,7 +17,10 @@ const ingredients = [
   {name: 'Onion', color: 'lightyellow'}
 ]
 
-class App extends Component {
+const [ingredients, setIngredients] = useState(ingredientsStart)
+
+
+function App() {
   state = {
     burgerIngredients: []
   }
