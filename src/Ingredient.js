@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
 
-class Ingredient extends Component {
-    render() {
+
+function Ingredient(props)  {
+     {
         return (
-            <li style={{backgroundColor: this.props.color}} key={this.props.key}>
-                {this.props.ingredient}
+            <li style={{backgroundColor: props.color}} key={props.key}>
+                {props.ingredient}
             </li>
         )
     }

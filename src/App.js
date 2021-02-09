@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import IngredientList from './IngredientList'
 import BurgerPane from './BurgerPane'
+import Ingredient from './Ingredient'
 
 const ingredientsStart = [
   {name: 'Kaiser Bun', color: 'saddlebrown'},
@@ -17,39 +18,38 @@ const ingredientsStart = [
   {name: 'Onion', color: 'lightyellow'}
 ]
 
-const [ingredients, setIngredients] = useState(ingredientsStart)
-
 
 function App() {
-  state = {
-    burgerIngredients: []
-  }
+  const [ingredients, setIngredients] = useState(ingredientsStart)
+  const [burgerIngredients, setBurgerIngredients] = useState([])
+  console.log(ingredients)
 
-  addToBurger = (e) => {
-    let currentBurger = this.state.burgerIngredients
+
+  const addToBurger = (e) => {
+    let currentBurger = burgerIngredients
+    console.log('111' + currentBurger)
     let newIngredient = {name: e.target.innerText, color: e.target.style.backgroundColor}
-    currentBurger.push(newIngredient)
+    console.log(newIngredient)
 
 
-    this.setState({
-      burgerIngredients: currentBurger
-    })
+    // currentBurger.push(newIngredient)
+
+
+    setBurgerIngredients([...burgerIngredients, newIngredient])
   }
 
-  clearBurger = (e) => {
-    this.setState({
-      burgerIngredients: []
-    })
+  const clearBurger = (e) => {
+    setBurgerIngredients([])
   }
 
-  render() {
+  
     return (
       <div style={{display: "flex"}}>
-        <IngredientList ingredients={ingredients} addToBurger={this.addToBurger} />
-        <BurgerPane burgerIngredients={this.state.burgerIngredients} clearBurger={this.clearBurger} />
+        <IngredientList ingredients={ingredients} addToBurger={addToBurger} />
+        <BurgerPane burgerIngredients={burgerIngredients} clearBurger={clearBurger} />
       </div>
     )
   }
-}
+
 
 export default App
